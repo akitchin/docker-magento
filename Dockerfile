@@ -24,7 +24,10 @@ RUN a2dissite 000-default.conf
 RUN a2enmod rewrite
 RUN /etc/init.d/mysql start && echo "CREATE DATABASE magento2" | mysql -u root && /etc/init.d/mysql stop
 
+# configure supervisor
+ADD supervisor/conf.d/* /etc/supervisor/conf.d/
+
 EXPOSE 80
 
-# Default docker process 
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+# Default docker process
+CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
