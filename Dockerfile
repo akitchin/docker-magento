@@ -6,7 +6,7 @@ ENV MYSQL_USER=mysql \
     MYSQL_RUN_DIR=/run/mysqld \
     MYSQL_LOG_DIR=/var/log/mysql
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y git apache2 php libapache2-mod-php curl mysql-server-5.7 libcurl3 php-curl php-gd php-mcrypt php-intl php-xsl php-mysql php-mbstring php-zip supervisor && apt-get -y autoremove && apt-get clean
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y sudo cron git apache2 php libapache2-mod-php curl mysql-server-5.7 libcurl3 php-curl php-gd php-mcrypt php-intl php-xsl php-mysql php-mbstring php-zip supervisor && apt-get -y autoremove && apt-get clean
 RUN phpenmod mcrypt 
 RUN phpenmod intl
 RUN phpenmod xsl
